@@ -15,11 +15,12 @@ import { Button } from "@/components/ui/button";
 import FormError from "@/components/form-error";
 import FormSuccess from "@/components/form-success";
 import { login } from "@/actions/login";
+import Link from "next/link";
 
 export const LoginForm = () => {
   const searchParams = useSearchParams();
   // const urlError = searchParams.get("error") === "OAuthAccountNotLinked" ? "Email already in use with different provider!" : "";
-  // const urlCallbackError = searchParams.get("error") === "OAuthCallbackError" ? "Failed to login!" : "";
+  // const urlCallbackError = searchParams.get("error") === "OAuthCallbackError" ? "Failed to log in!" : "";
   let urlError = "";
 
   switch (searchParams.get("error")) {
@@ -100,6 +101,16 @@ export const LoginForm = () => {
                       {...field}
                     />
                   </FormControl>
+                  <Button
+                    size="sm"
+                    variant="link"
+                    asChild
+                    className="px-0 font-normal"
+                  >
+                    <Link href="/auth/reset">
+                      Forgot Password?
+                    </Link>
+                  </Button>
                   <FormMessage />
                 </FormItem>
               )}
